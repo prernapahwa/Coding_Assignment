@@ -1,0 +1,77 @@
+ /**
+ * Program to find squareroot upto p decimal places without using inbuilt functions.
+ * using binary search
+ *
+ * @Prerna_0964
+ * 17/7/2021
+ * Day1_Coding_Assignment
+ *
+**/
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+int main() {
+    int n;
+    int p;
+    cin >> n >> p;
+    int l = 0 , r = n / 2;
+    int mid;
+    double ans;
+
+    //finding number before decimal
+    while(l <= r) {
+        mid = l + ( r - l ) / 2;
+
+        // cout << "mid" << mid << endl;
+
+        if ( mid * mid <= n && (mid + 1) * (mid + 1) > n ){
+            // cout << mid;
+            break;
+        }
+        if( mid * mid > n )
+            r = mid - 1;
+        else
+            l = mid + 1;
+    }
+    ans = mid;
+	
+
+    //finding digits after decimal to p precison
+	
+	double temp = 0.1;
+	while( p-- ) {
+		while( ans * ans <= n) {
+			ans = ans + temp;
+		}
+		ans = ans - temp;
+		temp = temp / 10;
+	}
+	cout << ans;
+
+
+//    l=0;
+//    r=9;
+//    int temp=1;
+//    double ANS=ans;
+//    while(temp<=p) {
+//    	cout<<endl;
+//        while(l<=r) {
+//            mid=l+(r-l)/2;
+//            double t=ANS+mid/pow(10,temp);
+//
+//            if(t*t<=n) {
+//            	cout<<mid<<" ";
+//                ANS=t;
+//                break;
+//            }
+//            if(t*t>n)
+//                r=mid-1;
+//            else
+//                l=mid+1;
+//        }
+//        temp++;
+//    }
+    //cout<<ANS;
+
+}
