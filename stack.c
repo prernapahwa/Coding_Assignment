@@ -102,4 +102,11 @@ int main() {
 
 }
 
+/*Time Complexities for 
+	push | O(1)
+	pop  | O(1)
+	peek | O(1)
+    is_empty | O(1)	
+*Space Complexity for 'n' push operations is O(n)
 
+*/
